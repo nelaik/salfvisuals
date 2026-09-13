@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SalfVisuals — визуальный клиент для Minecraft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <span class="wordmark">SF<span class="wordmark-sub">Visuals</span></span>
+    <nav class="topnav">
+      <a href="#features">Функции</a>
+      <a href="#install">Установка</a>
+      <a href="#changelog">Изменения</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-logo" aria-hidden="true">SF</div>
+    <h1>SalfVisuals</h1>
+    <p class="hero-tagline">Клиентский мод для Minecraft: честные визуальные улучшения, гибкий HUD и ни одной функции, которая видит сквозь стены.</p>
+
+    <div class="hero-meta">
+      <span class="badge" id="badge-stage">BETA</span>
+      <span class="meta-item">версия <strong id="meta-version">—</strong></span>
+      <span class="meta-item">для Minecraft <strong id="meta-mc">—</strong></span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary" id="download-jar">
+        Скачать SalfVisuals
+        <span class="btn-sub" id="download-jar-sub">.jar файл</span>
+      </a>
+      <a href="#" class="btn btn-secondary" id="download-fabric" target="_blank" rel="noopener">
+        Fabric API
+        <span class="btn-sub" id="download-fabric-sub">обязательно нужен</span>
+      </a>
+    </div>
+
+    <p class="hero-note">Это бета — часть функций может работать нестабильно. Пиши о багах в личку/сервер.</p>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <h2>Что внутри</h2>
+    <div class="feature-grid">
+
+      <article class="feature feature-large">
+        <h3>HUD, который выглядит как свой</h3>
+        <p>Logo, здоровье, координаты, пинг, инвентарь, броня — каждый элемент двигается мышкой, красится в общий акцент темы, у каждого своя прозрачность.</p>
+      </article>
+
+      <article class="feature">
+        <h3>Sky</h3>
+        <p>Aurora и Nebula — движущееся небо на весь купол, не только у горизонта.</p>
+      </article>
+
+      <article class="feature">
+        <h3>Target Effect</h3>
+        <p>Подсветка того, на кого ты смотришь — требует прямой видимости, не работает сквозь стены.</p>
+      </article>
+
+      <article class="feature">
+        <h3>Полная RGB-палитра</h3>
+        <p>Любой цвет любого элемента — не набор пресетов, а настоящий color picker.</p>
+      </article>
+
+      <article class="feature feature-wide">
+        <h3>Два стиля меню, RU/EN</h3>
+        <p>Классическое меню или новое мультиколоночное — переключается на лету. Язык интерфейса — тоже.</p>
+      </article>
+
+      <article class="feature">
+        <h3>Custom Trails</h3>
+        <p>Волнистый светящийся след позади игрока при движении.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="install">
+  <div class="wrap">
+    <h2>Установка</h2>
+    <ol class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <div>
+          <h4>Поставь Fabric Loader</h4>
+          <p>Через <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">официальный установщик Fabric</a>, версия Minecraft — <strong id="step-mc">1.21.8</strong>.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div>
+          <h4>Скачай Fabric API</h4>
+          <p>Без него мод не запустится. Кнопка выше ведёт на нужную версию.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div>
+          <h4>Скачай SalfVisuals</h4>
+          <p>Кнопка выше — <code id="step-jar">salfvisuals-0.1.0-beta.jar</code>.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div>
+          <h4>Закинь оба файла в <code>mods</code></h4>
+          <p><code>%appdata%\.minecraft\mods</code> — и Fabric API, и SalfVisuals должны лежать там рядом.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <div>
+          <h4>Запусти игру через профиль Fabric</h4>
+          <p>В лаунчере выбери профиль "fabric-loader-..." — меню мода открывается по <strong>Right Shift</strong>.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="changelog">
+  <div class="wrap">
+    <h2>Что нового</h2>
+    <div class="changelog-card">
+      <div class="changelog-head">
+        <strong id="changelog-version">v0.1.0 beta</strong>
+        <span id="changelog-date">—</span>
+      </div>
+      <ul id="changelog-list"></ul>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>SalfVisuals — мод не даёт игровых преимуществ: без ESP сквозь стены, без автоматизации боя.</span>
+    <a href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener">Fabric API на Modrinth →</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

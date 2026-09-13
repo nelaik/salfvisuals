@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "stage": "beta",
+  "releaseDate": "2026-09-12",
+  "jarFile": "downloads/salfvisuals-0.1.0-beta.jar",
+  "minecraftVersion": "1.21.8",
+  "fabricApiVersion": "0.134.0+1.21.8",
+  "fabricApiUrl": "https://modrinth.com/mod/fabric-api/version/0.134.0+1.21.8",
+  "fabricLoaderVersion": "0.16.14",
+  "changelog": [
+    "Первая бета-версия",
+    "HUD: Logo, Player Info, Armor, Potion Info, Cooldowns, Notifications, Target HUD, Mace Helper, Hit Counter, Low HP",
+    "Визуалы: Sky (Aurora/Nebula), Custom Fog, China Hat, Target Effect, Custom Crosshair, Trails, JumpCircle, ItemPhysic",
+    "Меню: два стиля интерфейса, полноценная RGB-палитра цвета, переключение RU/EN",
+    "Утилиты: Binds, Auto Command, AutoRespawn, Performance, Server Helper"
+  ]
+}
