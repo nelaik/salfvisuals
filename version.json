@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "stage": "beta",
   "releaseDate": "2026-09-12",
-  "jarFile": "salfvisuals-0.1.0-beta.jar",
+  "jarFile": "downloads/salfvisuals-0.1.0-beta.jar",
   "minecraftVersion": "1.21.8",
   "fabricApiVersion": "0.134.0+1.21.8",
   "fabricApiUrl": "https://modrinth.com/mod/fabric-api/version/0.134.0+1.21.8",
