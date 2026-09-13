@@ -290,6 +290,11 @@ code {
   color: var(--text-dim);
   font-size: 13px;
 }
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 .footer-inner a {
   text-decoration: none;
   color: var(--accent-a);
