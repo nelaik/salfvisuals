@@ -109,7 +109,7 @@ code {
 }
 .hero-inner { position: relative; }
 .hero-logo-img {
-  --logo-mask: url('assets/sf_logo.png');
+  --logo-mask: url('sf_logo.png');
   width: 180px;
   height: auto;
   aspect-ratio: 452 / 331;
