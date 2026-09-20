@@ -23,7 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, .wordmark, .hero-logo {
+h1, h2, h3, h4, .wordmark {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
 }
 
@@ -59,17 +59,27 @@ code {
   height: 60px;
 }
 .wordmark {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-weight: 700;
   font-size: 20px;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.wordmark-sub {
   color: var(--text);
-  font-weight: 500;
-  -webkit-text-fill-color: var(--text);
+}
+.wordmark-icon {
+  width: 26px;
+  height: auto;
+  aspect-ratio: 452 / 331;
+  -webkit-mask-image: var(--logo-mask);
+  mask-image: var(--logo-mask);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background: var(--grad);
+  display: inline-block;
 }
 .topnav a {
   text-decoration: none;
@@ -98,21 +108,28 @@ code {
   pointer-events: none;
 }
 .hero-inner { position: relative; }
-.hero-logo {
-  font-size: 72px;
-  font-weight: 700;
-  letter-spacing: -2px;
+.hero-logo-img {
+  --logo-mask: url('assets/sf_logo.png');
+  width: 180px;
+  height: auto;
+  aspect-ratio: 452 / 331;
+  -webkit-mask-image: var(--logo-mask);
+  mask-image: var(--logo-mask);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
   background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  line-height: 1;
-  margin-bottom: 8px;
+  display: block;
+  margin: 0 auto 18px;
 }
 .hero h1 {
   font-size: 40px;
   font-weight: 600;
   margin: 0 0 14px;
+
 }
 .hero-tagline {
   max-width: 540px;
@@ -290,6 +307,11 @@ code {
   color: var(--text-dim);
   font-size: 13px;
 }
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 .footer-inner a {
   text-decoration: none;
   color: var(--accent-a);
@@ -299,7 +321,7 @@ code {
   .feature-grid { grid-template-columns: 1fr; }
   .feature-large, .feature-wide { grid-column: span 1; }
   .hero h1 { font-size: 30px; }
-  .hero-logo { font-size: 54px; }
+  .hero-logo-img { width: 130px; }
   .topnav { display: none; }
 }
 
