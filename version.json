@@ -7,7 +7,11 @@
   "fabricApiVersion": "0.119.4+1.21.4",
   "fabricApiUrl": "https://modrinth.com/mod/fabric-api/version/0.119.4+1.21.4",
   "fabricLoaderVersion": "0.16.14",
+
+  "downloadBaseUrl": "",
+
   "changelog": [
+    "Antitilt: вместо пиксельного кота — реальные фото/мемы котов (рандомно из подборки)",
     "Портировано на Minecraft 1.21.4 (было 1.21.8)",
     "Первая бета-версия",
     "HUD: Logo, Player Info, Armor, Potion Info, Cooldowns, Notifications, Target HUD, Mace Helper, Hit Counter, Low HP",
