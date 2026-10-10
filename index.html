@@ -4,202 +4,189 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SalfVisuals — визуальный мод для Minecraft</title>
-<meta name="description" content="SalfVisuals — клиентский мод для Minecraft 1.21.4 на Fabric: гибкий HUD, друзья, красивые эффекты цели, косметика с физикой и помощник аукциона. Без ESP сквозь стены.">
+<meta name="description" content="SalfVisuals — бесплатный визуальный мод для Minecraft 1.21.4 на Fabric: небо и атмосфера, эффекты цели, косметика с физикой, свой HUD и меню. Красивее, а не сильнее.">
+<meta property="og:title" content="SalfVisuals">
+<meta property="og:description" content="Бесплатный визуальный мод для Minecraft: небо, эффекты цели, косметика, HUD.">
+<meta name="theme-color" content="#08110e">
 <link rel="icon" href="favicon.ico?v=1" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#12301a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=0.3.7">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
-<header class="bar">
-  <div class="wrap bar-in">
-    <a class="brand" href="#top" aria-label="SalfVisuals">
-      <span class="brand-logo" aria-hidden="true"></span>
-      <span class="brand-name">Visuals</span>
-    </a>
-    <nav class="nav" aria-label="Разделы">
-      <a href="#features">Что внутри</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true"></span>SalfVisuals</a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="#features">Возможности</a>
       <a href="#install">Установка</a>
-      <a href="#changelog">Что нового</a>
+      <a href="#updates">Обновления</a>
+      <a href="#faq">Вопросы</a>
     </nav>
+    <div class="nav-actions" id="nav-actions">
+      <button class="btn btn-ghost btn-small" type="button" data-open-auth="login">Войти</button>
+      <a class="btn btn-primary btn-small" href="#install">Скачать</a>
+    </div>
+    <button class="nav-toggle" type="button" id="nav-toggle" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<main id="top">
+<main>
 
 <section class="hero">
-  <div class="wrap hero-in">
-    <div class="hero-copy">
-      <p class="hero-status"><span class="badge" id="badge-stage" hidden></span> версия <strong id="meta-version">—</strong> · Minecraft <strong id="meta-mc">—</strong></p>
-      <h1>SalfVisuals</h1>
-      <p class="hero-lead">Мод для Minecraft, который делает интерфейс и бой красивее, а не сильнее. Двигаемый HUD, друзья, эффекты цели, косметика с физикой. Ничего не видно сквозь стены, боем мод не управляет.</p>
-
-      <div class="actions">
-        <a href="#" class="btn btn-main" id="download-jar">
-          Скачать мод
-          <span class="btn-sub" id="download-jar-sub">.jar файл</span>
-        </a>
-        <a href="#" class="btn btn-ghost" id="download-fabric" target="_blank" rel="noopener">
-          Fabric API
-          <span class="btn-sub" id="download-fabric-sub">обязательно нужен</span>
-        </a>
-      </div>
-
-      <p class="hero-note">Нашёл баг или есть идея — пиши в Telegram: <a href="https://t.me/Ne1aik" target="_blank" rel="noopener">@Ne1aik</a>.</p>
-
-      <div class="download-stats" id="download-stats" hidden aria-label="Статистика скачиваний">
-        <div class="ds"><span class="ds-v" data-key="today">—</span><span class="ds-l">сегодня</span></div>
-        <div class="ds"><span class="ds-v" data-key="week">—</span><span class="ds-l">за неделю</span></div>
-        <div class="ds"><span class="ds-v" data-key="allTime">—</span><span class="ds-l">за всё время</span></div>
-      </div>
-    </div>
-
-    <!-- Макет того, как мод выглядит в игре: HUD, Target HUD, эффект цели и хотбар. Только декорация. -->
-    <div class="scene" aria-hidden="true">
-      <div class="scene-hill"></div>
-      <div class="hud-logo"><span class="hud-logo-mark"></span>Visuals<i></i>144 FPS<i></i>21 ms</div>
-      <div class="hud-friend"><b>Друзья</b><span>Salf <em>онлайн</em></span><span>Nika <em>онлайн</em></span></div>
-
-      <div class="target">
-        <div class="ring ring-a"></div>
-        <div class="ring ring-b"></div>
-        <div class="steve"><span class="s-head"></span><span class="s-body"></span><span class="s-leg"></span></div>
-        <span class="spark sp1"></span><span class="spark sp2"></span><span class="spark sp3"></span>
-      </div>
-
-      <div class="hud-target">
-        <div class="hud-head"><span></span></div>
-        <div class="hud-info">
-          <b>Ne1aik</b>
-          <div class="hp"><i></i></div>
-          <small>HP 17.0 / 20.0 · 3.4 м</small>
+  <canvas class="hero-sky" id="sky" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-title">SalfVisuals</h1>
+        <p class="hero-lead">Визуальный мод для Minecraft, который делает игру красивее, а не тебя сильнее. Своё небо и атмосфера, эффекты цели, косметика с физикой и интерфейс, который приятно открывать.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#install">Скачать бесплатно</a>
+          <a class="btn btn-ghost" href="#features">Что умеет мод</a>
         </div>
+        <p class="hero-meta" id="hero-meta">Версия <strong data-v="version">—</strong> для Minecraft <strong data-v="minecraftVersion">1.21.4</strong> на Fabric</p>
       </div>
 
-      <div class="hotbar">
-        <span></span><span></span><span></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span>
+      <div class="gui" id="gui" aria-label="Меню мода — можно пощёлкать">
+        <div class="gui-head">
+          <span class="gui-logo"><span class="logo-mark"></span></span>
+          <span class="gui-tab">Метки</span><span class="gui-tab">Темы</span><span class="gui-tab">Конфиги</span>
+          <span class="gui-count" id="gui-count">0 активно</span>
+        </div>
+        <div class="gui-body">
+          <div class="gui-cats" id="gui-cats" role="group" aria-label="Категории"></div>
+          <div>
+            <div class="gui-list" id="gui-list"></div>
+          </div>
+        </div>
+        <div class="gui-hint" id="gui-hint">Это меню мода. Выбери категорию и включи пару модулей.</div>
       </div>
     </div>
-  </div>
 
-  <div class="wrap facts">
-    <div class="fact"><strong>170+</strong><span>модулей в семи категориях</span></div>
-    <div class="fact"><strong>18</strong><span>режимов эффекта цели</span></div>
-    <div class="fact"><strong>80+</strong><span>вариантов косметики</span></div>
-    <div class="fact"><strong>RU / EN</strong><span>язык меню переключается на лету</span></div>
+    <div class="facts">
+      <div class="fact"><strong>170+</strong><span>модулей в семи категориях</span></div>
+      <div class="fact"><strong>18</strong><span>режимов эффекта цели</span></div>
+      <div class="fact"><strong>80+</strong><span>вариантов косметики</span></div>
+      <div class="fact"><strong>0 ₽</strong><span>мод бесплатный</span></div>
+    </div>
   </div>
 </section>
 
 <section class="section" id="features">
   <div class="wrap">
-    <h2 class="h2">Что внутри</h2>
-    <div class="spec">
-
-      <div class="spec-row">
-        <h3>Интерфейс</h3>
-        <ul>
-          <li>HUD двигается мышкой прямо в открытом чате, рисуется поверх скорборда и всего остального, у каждого элемента свой размер.</li>
-          <li>Свой хотбар и инвентарь, включая творческий, и свой шрифт у всего текста.</li>
-          <li>Серверный скорборд переоформляется под цвет темы. Любой цвет выбирается настоящей RGB-палитрой, меню в двух стилях.</li>
-        </ul>
-      </div>
-
-      <div class="spec-row">
-        <h3>Цель и друзья</h3>
-        <ul>
-          <li>Target Effect: 18 объёмных эффектов вокруг того, на кого смотришь. Нужна прямая видимость, стена закрывает эффект.</li>
-          <li>Друзья подсвечиваются зелёным или цветом темы, тоже не сквозь стены. Удар по другу можно запретить.</li>
-          <li>Target HUD с иконкой игрока, полосой HP и дистанцией.</li>
-        </ul>
-      </div>
-
-      <div class="spec-row">
-        <h3>Небо и мир</h3>
-        <ul>
-          <li>Cosmic с 12 пресетами, Vortex, Eclipse, Rift, Starfall и Nebula Rings, настоящее северное сияние.</li>
-          <li>Атмосфера, дождь с кругами на воде, следы, вихри и другие мягкие эффекты, которые можно отключить для FPS.</li>
-        </ul>
-      </div>
-
-      <div class="spec-row">
-        <h3>Косметика</h3>
-        <ul>
-          <li>Головные уборы, питомцы, крылья, плащи, обувь и кагуне — только для тебя, без текстур и внешних файлов.</li>
-          <li>Плащи с настоящей физикой ткани, крылья реагируют на бег, прыжок и падение.</li>
-        </ul>
-      </div>
-
-      <div class="spec-row">
-        <h3>Удобство</h3>
-        <ul>
-          <li>AuchHelper считает цены на аукционе за штуку и подсвечивает выгодный лот. Только показывает, ничего не покупает.</li>
-          <li>Shulker Preview, Container Search, Tooltip Plus, TPS Meter, Auto Reconnect, насыщенность голода и бинды на предметы.</li>
-        </ul>
-      </div>
-
+    <div class="section-head">
+      <h2>Что внутри</h2>
+      <p>Всё настраивается в меню на Right Shift. Ничего не видно сквозь стены, и боем мод не управляет.</p>
+    </div>
+    <div class="explore">
+      <div class="explore-list" role="tablist" aria-label="Возможности" id="explore-list"></div>
+      <div class="explore-panel" id="explore-panel" role="tabpanel"></div>
     </div>
   </div>
 </section>
 
-<section class="section section-tint" id="install">
+<section class="section" id="install">
   <div class="wrap">
-    <h2 class="h2">Установка</h2>
-    <ol class="steps">
-      <li>
-        <span class="step-n">1</span>
-        <div>
+    <div class="section-head">
+      <h2>Установка за пару минут</h2>
+      <p>Нужны Fabric и Fabric API — без них мод не запустится.</p>
+    </div>
+    <div class="install">
+      <ol class="steps">
+        <li>
           <h3>Поставь Fabric Loader</h3>
-          <p>Через <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">официальный установщик Fabric</a>, версия Minecraft — <strong id="step-mc">1.21.4</strong>.</p>
-        </div>
-      </li>
-      <li>
-        <span class="step-n">2</span>
-        <div>
+          <p>Через <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">официальный установщик</a>, версия Minecraft — <span data-v="minecraftVersion">1.21.4</span>.</p>
+        </li>
+        <li>
           <h3>Скачай Fabric API</h3>
-          <p>Без него мод не запустится. Кнопка вверху ведёт на нужную версию.</p>
-        </div>
-      </li>
-      <li>
-        <span class="step-n">3</span>
-        <div>
+          <p>Версия <span data-v="fabricApiVersion">для 1.21.4</span>, кнопка справа ведёт прямо на неё.</p>
+        </li>
+        <li>
           <h3>Скачай SalfVisuals</h3>
-          <p>Файл <code id="step-jar">salfvisuals-0.3.7.jar</code> лежит под кнопкой «Скачать мод».</p>
-        </div>
-      </li>
-      <li>
-        <span class="step-n">4</span>
-        <div>
+          <p>Файл <code data-v="jarFile">salfvisuals.jar</code>.</p>
+        </li>
+        <li>
           <h3>Положи оба файла в папку mods</h3>
-          <p><code>%appdata%\.minecraft\mods</code> — Fabric API и SalfVisuals должны лежать рядом.</p>
-        </div>
-      </li>
-      <li>
-        <span class="step-n">5</span>
-        <div>
-          <h3>Запусти профиль Fabric</h3>
-          <p>В лаунчере выбери профиль «fabric-loader-…». Меню мода открывается на <strong>Right Shift</strong>, готовые конфиги лежат в нём в разделе конфигов.</p>
-        </div>
-      </li>
-    </ol>
+          <p><code>%appdata%\.minecraft\mods</code>, затем запусти профиль Fabric в лаунчере. Меню мода — Right Shift.</p>
+        </li>
+      </ol>
+
+      <div class="free-card">
+        <div class="price">0 ₽<small>и без подписок</small></div>
+        <ul>
+          <li>Все модули, небо и косметика</li>
+          <li>Готовые конфиги под масштаб GUI 2, 3 и 4</li>
+          <li>Обновления выходят здесь же</li>
+        </ul>
+        <a class="btn btn-primary btn-block" id="download-jar" href="#">Скачать SalfVisuals</a>
+        <a class="btn btn-ghost btn-block" id="download-fabric" href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener">Скачать Fabric API</a>
+        <p class="stats-line" id="stats-line" hidden></p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section log" id="changelog">
+<section class="section" id="account">
   <div class="wrap">
-    <div class="log-head">
-      <h2 class="h2">Что нового</h2>
-      <p class="log-ver"><strong id="changelog-version">v0.3.7</strong> <span id="changelog-date">—</span></p>
+    <div class="account-band">
+      <div>
+        <h2>Аккаунт SalfVisuals</h2>
+        <p>Один аккаунт на сайте и, скоро, в самом моде. Регистрация — только логин и пароль, без почты.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" type="button" data-open-auth="register" id="account-cta">Создать аккаунт</button>
+        </div>
+      </div>
+      <div class="account-perks">
+        <div class="perk"><span class="perk-dot"></span><div><b>Профиль</b><span>Ник в Minecraft, дата регистрации, твой номер.</span></div></div>
+        <div class="perk soon"><span class="perk-dot"></span><div><b>Скоро: значок в игре</b><span>Другие игроки с модом увидят, что ты тоже с SalfVisuals.</span></div></div>
+        <div class="perk soon"><span class="perk-dot"></span><div><b>Скоро: конфиги в облаке</b><span>Настройки подтянутся на любом компьютере.</span></div></div>
+      </div>
     </div>
-    <div class="log-grid" id="changelog-list"></div>
-    <div class="log-history" id="changelog-history" hidden>
-      <h3 class="log-history-title">Прошлые версии</h3>
+  </div>
+</section>
+
+<section class="section" id="updates">
+  <div class="wrap">
+    <div class="section-head"><h2>Обновления</h2></div>
+    <div class="log-top"><span class="log-ver" id="log-ver">—</span><span class="log-date" id="log-date"></span></div>
+    <div class="log-grid" id="log-list"></div>
+    <div class="log-history" id="log-history" hidden></div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head"><h2>Вопросы</h2></div>
+    <div class="faq">
+      <details>
+        <summary>Это чит?</summary>
+        <p>Нет. Мод меняет только картинку: небо, эффекты, интерфейс, косметику. Сквозь стены ничего не показывает, за тебя не бьёт и не целится. Функции, которые сервер разрешает только у себя, привязаны к этому серверу в коде.</p>
+      </details>
+      <details>
+        <summary>На каких серверах работает?</summary>
+        <p>На любых, где можно играть с Fabric на 1.21.4. Для FunTime и HolyWorld есть отдельные помощники: зоны предметов, бинды, аукцион.</p>
+      </details>
+      <details>
+        <summary>Сколько FPS он ест?</summary>
+        <p>Мод делался и проверялся на ноутбуке со встроенной графикой. Тяжёлые эффекты можно выключить или снизить им качество, а при просадках мод сам упрощает часть отрисовки.</p>
+      </details>
+      <details>
+        <summary>Как открыть меню?</summary>
+        <p>Right Shift. Там же темы, конфиги, метки и друзья. HUD двигается мышкой прямо в открытом чате.</p>
+      </details>
+      <details>
+        <summary>Зачем аккаунт, если мод бесплатный?</summary>
+        <p>Сейчас это профиль с ником. Дальше через аккаунт появятся значок в игре и конфиги в облаке. Для скачивания аккаунт не нужен.</p>
+      </details>
+      <details>
+        <summary>Забыл пароль, что делать?</summary>
+        <p>Почту мы не собираем, поэтому восстановление — через Telegram <a href="https://t.me/Ne1aik" target="_blank" rel="noopener">@Ne1aik</a>.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -208,14 +195,44 @@
 
 <footer class="footer">
   <div class="wrap footer-in">
-    <span>SalfVisuals не даёт игровых преимуществ: без ESP сквозь стены и без автоматизации боя.</span>
+    <span>SalfVisuals не даёт игровых преимуществ и не связан с Mojang.</span>
     <span class="footer-links">
-      <a href="https://t.me/Ne1aik" target="_blank" rel="noopener">Telegram, @Ne1aik</a>
-      <a href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener">Fabric API на Modrinth</a>
+      <a href="https://t.me/Ne1aik" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener">Fabric API</a>
+      <a href="account.html">Аккаунт</a>
     </span>
   </div>
 </footer>
 
-<script src="script.js?v=0.3.7"></script>
+<div class="modal" id="auth-modal" hidden>
+  <div class="modal-backdrop" data-close-auth></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="modal-art">
+      <h3 id="auth-title">Аккаунт SalfVisuals</h3>
+      <p>Профиль сейчас, значок в игре и конфиги в облаке — скоро.</p>
+    </div>
+    <div class="modal-form">
+      <div class="tabs" role="tablist">
+        <button class="tab" type="button" role="tab" data-auth-tab="login" aria-selected="true">Вход</button>
+        <button class="tab" type="button" role="tab" data-auth-tab="register" aria-selected="false">Регистрация</button>
+      </div>
+      <p class="offline-note" id="auth-offline" hidden>Сервер аккаунтов ещё не подключён. Как только он заработает, войти можно будет здесь же.</p>
+      <form id="auth-form" novalidate>
+        <label class="field"><span>Логин</span><input name="login" autocomplete="username" required maxlength="16"><small data-only="register">3–16 символов: латиница, цифры и _</small></label>
+        <label class="field"><span>Пароль</span><input name="password" type="password" autocomplete="current-password" required maxlength="128"><small data-only="register">Не короче 8 символов</small></label>
+        <label class="field" data-only="register"><span>Пароль ещё раз</span><input name="password2" type="password" autocomplete="new-password" maxlength="128"></label>
+        <p class="form-error" id="auth-error" role="alert"></p>
+        <button class="btn btn-primary btn-block" type="submit" id="auth-submit">Войти</button>
+        <p class="form-note" data-only="login">Забыл пароль — напиши в Telegram <a href="https://t.me/Ne1aik" target="_blank" rel="noopener">@Ne1aik</a>.</p>
+      </form>
+    </div>
+    <button class="modal-close" type="button" data-close-auth aria-label="Закрыть">×</button>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="app.js?v=4.0"></script>
+<script src="home.js?v=4.0"></script>
 </body>
 </html>

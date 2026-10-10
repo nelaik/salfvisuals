@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Аккаунт — SalfVisuals</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#08110e">
+<link rel="icon" href="favicon.ico?v=1" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=4.0">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true"></span>SalfVisuals</a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="index.html#features">Возможности</a>
+      <a href="index.html#install">Установка</a>
+      <a href="index.html#updates">Обновления</a>
+      <a href="index.html#faq">Вопросы</a>
+    </nav>
+    <div class="nav-actions" id="nav-actions"></div>
+    <button class="nav-toggle" type="button" id="nav-toggle" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="account-page">
+  <div class="wrap">
+
+    <!-- пока проверяем вход -->
+    <div class="card" id="state-loading"><div class="empty"><p>Загружаю профиль…</p></div></div>
+
+    <!-- не вошёл -->
+    <div class="card" id="state-guest" hidden>
+      <div class="empty">
+        <h1>Войди в аккаунт</h1>
+        <p id="guest-text">Здесь будет твой профиль: ник в Minecraft, дата регистрации и настройки безопасности.</p>
+        <div class="hero-cta" style="justify-content:center">
+          <button class="btn btn-primary" type="button" data-open-auth="login">Войти</button>
+          <button class="btn btn-ghost" type="button" data-open-auth="register">Создать аккаунт</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- вошёл -->
+    <div class="dash" id="state-user" hidden>
+      <aside class="dash-side" role="tablist" aria-label="Разделы аккаунта">
+        <button class="side-item" type="button" role="tab" data-pane="profile" aria-selected="true">Профиль</button>
+        <button class="side-item" type="button" role="tab" data-pane="security" aria-selected="false">Безопасность</button>
+        <a class="side-item" href="index.html#install">Скачать мод</a>
+        <div class="side-sep"></div>
+        <button class="side-item" type="button" id="logout-btn">Выйти</button>
+      </aside>
+
+      <div>
+        <section data-pane-body="profile">
+          <div class="card">
+            <div class="banner"></div>
+            <div class="profile-head">
+              <span id="profile-avatar"></span>
+              <div class="profile-name"><h1 id="profile-username">—</h1><span id="profile-tag"></span></div>
+            </div>
+            <div class="card-body">
+              <div class="rows">
+                <div class="row"><span class="row-label">Логин</span><span class="row-value" id="row-username"></span></div>
+                <div class="row"><span class="row-label">Номер</span><span class="row-value" id="row-tag"></span></div>
+                <div class="row"><span class="row-label">С нами с</span><span class="row-value" id="row-created"></span></div>
+                <div class="row">
+                  <span class="row-label">Ник в Minecraft</span>
+                  <form class="inline-form" id="nick-form">
+                    <input name="nick" maxlength="16" placeholder="Например, Ne1aik" autocomplete="off" aria-label="Ник в Minecraft">
+                    <button class="btn btn-ghost btn-small" type="submit">Сохранить ник</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section data-pane-body="security" hidden>
+          <div class="card">
+            <div class="card-body">
+              <h2>Пароль</h2>
+              <p class="card-sub">После смены пароля все остальные входы завершатся, этот останется.</p>
+              <form class="pw-form" id="pw-form" novalidate>
+                <label class="field"><span>Текущий пароль</span><input name="old" type="password" autocomplete="current-password" maxlength="128"></label>
+                <label class="field"><span>Новый пароль</span><input name="new1" type="password" autocomplete="new-password" maxlength="128"><small>Не короче 8 символов</small></label>
+                <label class="field"><span>Новый пароль ещё раз</span><input name="new2" type="password" autocomplete="new-password" maxlength="128"></label>
+                <p class="form-error" id="pw-error" role="alert"></p>
+                <button class="btn btn-primary" type="submit">Сменить пароль</button>
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h2>Входы</h2>
+              <p class="card-sub" id="sessions-text">—</p>
+              <div class="hero-cta"><button class="btn btn-danger" type="button" id="logout-all">Завершить другие входы</button></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <span>SalfVisuals не даёт игровых преимуществ и не связан с Mojang.</span>
+    <span class="footer-links">
+      <a href="https://t.me/Ne1aik" target="_blank" rel="noopener">Telegram</a>
+      <a href="index.html">Главная</a>
+    </span>
+  </div>
+</footer>
+
+<div class="modal" id="auth-modal" hidden>
+  <div class="modal-backdrop" data-close-auth></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="modal-art">
+      <h3 id="auth-title">Аккаунт SalfVisuals</h3>
+      <p>Профиль сейчас, значок в игре и конфиги в облаке — скоро.</p>
+    </div>
+    <div class="modal-form">
+      <div class="tabs" role="tablist">
+        <button class="tab" type="button" role="tab" data-auth-tab="login" aria-selected="true">Вход</button>
+        <button class="tab" type="button" role="tab" data-auth-tab="register" aria-selected="false">Регистрация</button>
+      </div>
+      <p class="offline-note" id="auth-offline" hidden>Сервер аккаунтов ещё не подключён. Как только он заработает, войти можно будет здесь же.</p>
+      <form id="auth-form" novalidate>
+        <label class="field"><span>Логин</span><input name="login" autocomplete="username" required maxlength="16"><small data-only="register">3–16 символов: латиница, цифры и _</small></label>
+        <label class="field"><span>Пароль</span><input name="password" type="password" autocomplete="current-password" required maxlength="128"><small data-only="register">Не короче 8 символов</small></label>
+        <label class="field" data-only="register"><span>Пароль ещё раз</span><input name="password2" type="password" autocomplete="new-password" maxlength="128"></label>
+        <p class="form-error" id="auth-error" role="alert"></p>
+        <button class="btn btn-primary btn-block" type="submit" id="auth-submit">Войти</button>
+        <p class="form-note" data-only="login">Забыл пароль — напиши в Telegram <a href="https://t.me/Ne1aik" target="_blank" rel="noopener">@Ne1aik</a>.</p>
+      </form>
+    </div>
+    <button class="modal-close" type="button" data-close-auth aria-label="Закрыть">×</button>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="app.js?v=4.0"></script>
+<script src="account.js?v=4.0"></script>
+</body>
+</html>

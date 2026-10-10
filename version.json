@@ -7,6 +7,7 @@
   "fabricApiVersion": "0.119.4+1.21.4",
   "fabricApiUrl": "https://modrinth.com/mod/fabric-api/version/0.119.4+1.21.4",
   "fabricLoaderVersion": "0.16.14",
+  "apiBaseUrl": "",
   "downloadBaseUrl": "",
   "changelog": [
     {
