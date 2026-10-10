@@ -6,7 +6,9 @@
 ## Как обновить сайт на GitHub Pages (репозиторий `nelaik/salfvisuals`)
 
 1. Загрузи в **корень** репозитория с заменой все файлы из этого архива:
-   `index.html`, `style.css`, `script.js`, `version.json`, `sf_logo.png`, `README.md`.
+   `index.html`, `style.css`, `script.js`, `version.json`, `sf_logo.png`, `README.md`,
+   иконки `favicon.ico`, `favicon-16.png`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`
+   и `site.webmanifest`.
 2. Рядом загрузи сам мод — файл **`salfvisuals-0.3.7.jar`**.
    Это ровно то имя, которое даёт `gradlew build` (`build/libs/salfvisuals-0.3.7.jar`), переименовывать не надо.
 3. Старые `salfvisuals-0.1.0-beta.jar` / `salfvisuals-0.2.0-beta.jar` можно удалить — на них больше ничего не ссылается.
